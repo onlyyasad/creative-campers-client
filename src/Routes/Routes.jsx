@@ -23,4 +23,11 @@ export const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "*",
+        element: <div className="flex justify-center items-center min-h-screen">
+            <h1 className="text-center text-5xl text-red-400 font-poppins">404 Error</h1>
+        </div>
+
+    }
 ]);
