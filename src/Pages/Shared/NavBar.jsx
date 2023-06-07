@@ -1,13 +1,44 @@
+import { NavLink } from "react-router-dom";
+import { AiOutlineUser } from 'react-icons/ai';
 
 
 const NavBar = () => {
+    const activeClass = "text-blue-700";
+    const inactiveClass = "";
 
     const menuLi = <>
-        <li><a>Item 1</a></li>
-        <li><a>Item 3</a></li>
+        <li>
+            <NavLink
+                to="/"
+                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
+                Home
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/"
+                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
+                Instructors
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/"
+                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
+                Classes
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/"
+                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
+                Dashboard
+            </NavLink>
+        </li>
+
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-200">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -17,7 +48,7 @@ const NavBar = () => {
                         {menuLi}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <p className="normal-case text-xs"> <span className="font-bold text-xl">Creative</span><span className="text-blue-700 font-bold text-xl">Campers</span> <br /> by BlueDot Academy</p>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -25,7 +56,9 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <a className="btn btn-circle"><AiOutlineUser /></a>
+                <button className="btn">Logout</button>
+                <button className="btn">Login</button>
             </div>
         </div>
     );

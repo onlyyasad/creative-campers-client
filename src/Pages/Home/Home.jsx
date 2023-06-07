@@ -1,9 +1,10 @@
+import Banner from "../Shared/Banner";
 
 
 const Home = () => {
     return (
         <div>
-            This is home
+            <Banner></Banner>
         </div>
     );
 };
