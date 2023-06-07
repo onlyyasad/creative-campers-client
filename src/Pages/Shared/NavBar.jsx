@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiOutlineUser } from 'react-icons/ai';
 
 
@@ -58,7 +58,7 @@ const NavBar = () => {
             <div className="navbar-end">
                 <a className="btn btn-circle"><AiOutlineUser /></a>
                 <button className="btn">Logout</button>
-                <button className="btn">Login</button>
+                <Link to="/login"><button className="btn">Login</button></Link>
             </div>
         </div>
     );

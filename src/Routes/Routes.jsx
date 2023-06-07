@@ -14,6 +14,8 @@ import ManageClasses from "../Pages/DashboardPages/AdminDashboard/ManageClasses"
 import ManageUsers from "../Pages/DashboardPages/AdminDashboard/ManageUsers";
 import AddClass from "../Pages/DashboardPages/InstructorDashboard/AddClass";
 import MyClasses from "../Pages/DashboardPages/InstructorDashboard/MyClasses";
+import Login from "../Pages/Login/Login";
+import Registration from "../Pages/Login/Registration";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
             {
                 path: "classes",
                 element: <Classes></Classes>
+            },
+            {
+                path: "login",
+                element: <Login></Login>
+            },
+            {
+                path: "registration",
+                element: <Registration></Registration>
             }
         ]
     },
@@ -85,6 +95,5 @@ export const router = createBrowserRouter([
         element: <div className="flex justify-center items-center min-h-screen">
             <h1 className="text-center text-5xl text-red-400 font-poppins">404 Error</h1>
         </div>
-
     }
 ]);
