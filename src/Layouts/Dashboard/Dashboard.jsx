@@ -30,9 +30,17 @@ const Dashboard = () => {
                         <p className="px-3 py-2 text-xs">Admin Panel</p>
                         <li>
                             <NavLink
-                                to="/dashboard/student"
+                                to="/"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
                                 <AiOutlineHome />
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/dashboard/student"
+                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
+                                <BiBell />
                                 Student Dashboard
                             </NavLink>
                         </li>
@@ -70,32 +78,6 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/dashboard/admin"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <HiOutlineClipboardList />
-                                Admin Dashboard
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/dashboard/manage-classes"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <FiSettings />
-                                Manage Classes
-                            </NavLink>
-                        </li>
-                        <hr />
-                        
-                        <li>
-                            <NavLink
-                                to="/dashboard/manage-users"
-                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <HiOutlineMail />
-                                Manage Users
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
                                 to="/dashboard/add-class"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
                                 <BsBoundingBox />
@@ -112,12 +94,30 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/"
+                                to="/dashboard/admin"
                                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                <BiBell />
-                                Home
+                                <HiOutlineClipboardList />
+                                Admin Dashboard
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to="/dashboard/manage-classes"
+                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
+                                <FiSettings />
+                                Manage Classes
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/dashboard/manage-users"
+                                className={({ isActive }) => isActive ? activeClass : inactiveClass}>
+                                <HiOutlineMail />
+                                Manage Users
+                            </NavLink>
+                        </li>
+
+
                     </ul>
                 </div>
             </div>
