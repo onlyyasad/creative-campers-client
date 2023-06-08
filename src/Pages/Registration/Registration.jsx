@@ -5,6 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 
+const img_hosting_token = import.meta.env.VITE_Image_Upload_Token
 
 const Registration = () => {
     const { createUser, updateUserData, googleLogin, logOutUser } = useAuth();
@@ -16,38 +17,54 @@ const Registration = () => {
         reset
     } = useForm();
 
+    const img_upload_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+
     const navigate = useNavigate();
 
-    const handleSignUp = user => {
-        const name = user.name;
-        const email = user.email;
-        const password = user.password;
-        const confirmPassword = user.confirm_password;
-        const photo = "";
+    const handleSignUp = data => {
+        const name = data.name;
+        const email = data.email;
+        const password = data.password;
+        const confirmPassword = data.confirm_password;
+
         if (password === confirmPassword) {
             createUser(email, password)
                 .then(result => {
-                    updateUserData(result.user, name, photo)
-                        .then(() => {
-                            Swal.fire({
-                                position: 'top-center',
-                                icon: 'success',
-                                title: 'Sign-up successful, now please login.',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            logOutUser();
-                            setError("");
-                            navigate("/login");
-                            reset();
+                    const formData = new FormData();
+                    formData.append('image', data.image[0]);
+                    fetch(img_upload_url, {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(res => res.json())
+                        .then(imgResponse => {
+                            if (imgResponse.success) {
+                                const photoUrl = imgResponse.data.display_url;
+                                updateUserData(result.user, name, photoUrl)
+                                    .then(() => {
+                                        Swal.fire({
+                                            position: 'top',
+                                            icon: 'success',
+                                            title: 'Sign-up successful, now please login.',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        })
+                                        console.log(result.user)
+                                        logOutUser();
+                                        setError("");
+                                        navigate("/login");
+                                        reset();
+                                    })
+                                    .catch(error => {
+                                        setError(error.message)
+                                    })
+                            }
                         })
-                        .catch(error => {
-                            setError(error.message)
-                        })
+
                 })
                 .catch(error => {
                     Swal.fire({
-                        position: 'top-center',
+                        position: 'center',
                         icon: 'error',
                         title: error.message,
                         showConfirmButton: false,
@@ -60,15 +77,15 @@ const Registration = () => {
             setError("Confirm Password doesn't match")
             alert(error)
         }
-        console.log(user)
+        console.log(data)
     }
 
     const handleGoogleLogin = () => {
         googleLogin()
-        .then(() =>{
-            navigate("/")
-        })
-        .catch(error => console.log(error.message))
+            .then(() => {
+                navigate("/")
+            })
+            .catch(error => console.log(error.message))
     }
     return (
         <div>
@@ -81,7 +98,7 @@ const Registration = () => {
                         <div className='card-body pb-0'>
                             <h3 className='text-center font-bold text-xl pb-4'>Sign Up</h3>
                         </div>
-                        <form className="card-body pt-0" onSubmit={handleSubmit((data) => handleSignUp(data))}>
+                        <form className="card-body pt-0" onSubmit={handleSubmit(handleSignUp)}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -117,8 +134,8 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text font-semibold">Your Photo</span>
                                 </label>
-                                <input {...register("photo", { required: true })} type="file" className="file-input file-input-bordered w-full max-w-md" />
-                                {errors.photo && <p className='text-xs mt-2 text-red-600'>Photo is required.</p>}
+                                <input {...register("image", { required: true })} type="file" className="file-input file-input-bordered w-full max-w-md" />
+                                {errors.image && <p className='text-xs mt-2 text-red-600'>Photo is required.</p>}
                             </div>
                             <div>
                                 <p className='text-xs text-red-600'>{error}</p>

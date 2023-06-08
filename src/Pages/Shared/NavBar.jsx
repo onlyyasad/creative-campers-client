@@ -58,7 +58,7 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user? <><a className="btn btn-circle" title={user.displayName}><AiOutlineUser /></a>
+                {user? <><img className="btn btn-circle" src={user.photoURL} alt="" />
                 <button onClick={() => logOutUser()} className="btn">Logout</button> </>:
                 <Link to="/login"><button className="btn">Login</button></Link>}
             </div>
