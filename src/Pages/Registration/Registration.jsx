@@ -4,6 +4,7 @@ import { FaFacebookF, FaGoogle, FaGithub } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token
 
@@ -39,21 +40,27 @@ const Registration = () => {
                         .then(res => res.json())
                         .then(imgResponse => {
                             if (imgResponse.success) {
-                                const photoUrl = imgResponse.data.display_url;
-                                updateUserData(result.user, name, photoUrl)
+                                const photoURL = imgResponse.data.display_url;
+                                updateUserData(result.user, name, photoURL)
                                     .then(() => {
-                                        Swal.fire({
-                                            position: 'top',
-                                            icon: 'success',
-                                            title: 'Sign-up successful, now please login.',
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        })
-                                        console.log(result.user)
-                                        logOutUser();
-                                        setError("");
-                                        navigate("/login");
-                                        reset();
+                                        const saveUser = { name, email, photoURL, role: "student" };
+                                        axios.post("http://localhost:5000/users", saveUser)
+                                            .then(res => {
+                                                if (res.data.insertedId) {
+                                                    Swal.fire({
+                                                        position: 'top',
+                                                        icon: 'success',
+                                                        title: 'Sign-up successful, now please login.',
+                                                        showConfirmButton: false,
+                                                        timer: 1500
+                                                    })
+                                                    logOutUser();
+                                                    setError("");
+                                                    navigate("/login");
+                                                    reset();
+                                                }
+                                            })
+
                                     })
                                     .catch(error => {
                                         setError(error.message)
@@ -82,8 +89,16 @@ const Registration = () => {
 
     const handleGoogleLogin = () => {
         googleLogin()
-            .then(() => {
-                navigate("/")
+            .then((result) => {
+                const user = result.user;
+                const saveUser = { name: user.displayName, email: user.email, photoURL: user.photoURL, role: "student" };
+                axios.post("http://localhost:5000/users", saveUser)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            setError("");
+                            navigate("/");
+                        }
+                    })
             })
             .catch(error => console.log(error.message))
     }
