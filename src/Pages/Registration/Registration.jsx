@@ -93,11 +93,9 @@ const Registration = () => {
                 const user = result.user;
                 const saveUser = { name: user.displayName, email: user.email, photoURL: user.photoURL, role: "student" };
                 axios.post("http://localhost:5000/users", saveUser)
-                    .then(res => {
-                        if (res.data.insertedId) {
-                            setError("");
-                            navigate("/");
-                        }
+                    .then(() => {
+                        setError("");
+                        navigate("/");
                     })
             })
             .catch(error => console.log(error.message))

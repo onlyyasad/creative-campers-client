@@ -2,11 +2,16 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaGithub } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
+import { useState } from 'react';
 
 
 
 const Login = () => {
     const { loginUser, googleLogin } = useAuth();
+    const [error, setError] = useState("");
+    const [showError, setShowError] = useState("");
+
     const {
         register,
         handleSubmit,
@@ -25,13 +30,27 @@ const Login = () => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser)
                 navigate(from, { replace: true })
+                setError("")
             })
-            .catch(error => console.log(error.message))
+            .catch(error => {
+                if(error.code === "auth/wrong-password"){
+                    setError("Wrong password")
+                }
+                if(error.code === "auth/user-not-found"){
+                    setError("No user registered with this Email")
+                }
+            })
     }
     const handleGoogleLogin = () => {
         googleLogin()
-            .then(() => {
-                navigate(from, { replace: true })
+            .then((result) => {
+                const user = result.user;
+                const saveUser = { name: user.displayName, email: user.email, photoURL: user.photoURL, role: "student" };
+                axios.post("http://localhost:5000/users", saveUser)
+                    .then(() => {
+                        setError("");
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(error => console.log(error.message))
     }
@@ -64,7 +83,9 @@ const Login = () => {
                                 <input type="password" placeholder="password" {...register('password', { required: true })} className="input input-bordered" />
                                 {errors.password && <p className='text-xs mt-2 text-red-500'>Password is required.</p>}
                             </div>
-
+                            <div>
+                                <p className='text-xs text-red-600'>{error}</p>
+                            </div>
                             <div className="form-control mt-6">
                                 <button type='submit' className={`btn bg-yellow-600 hover:bg-yellow-700 normal-case border-0 hover:border-0`}>Sign In</button>
                             </div>
