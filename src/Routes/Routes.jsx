@@ -15,7 +15,7 @@ import ManageUsers from "../Pages/DashboardPages/AdminDashboard/ManageUsers";
 import AddClass from "../Pages/DashboardPages/InstructorDashboard/AddClass";
 import MyClasses from "../Pages/DashboardPages/InstructorDashboard/MyClasses";
 import Login from "../Pages/Login/Login";
-import Registration from "../Pages/Login/Registration";
+import Registration from "../Pages/Registration/Registration";
 
 export const router = createBrowserRouter([
     {

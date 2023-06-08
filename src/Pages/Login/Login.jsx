@@ -1,20 +1,39 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaGithub } from 'react-icons/fa';
+import useAuth from '../../hooks/useAuth';
 
 
 
 const Login = () => {
+    const { loginUser, googleLogin } = useAuth();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const handleLogin = data =>{
-        console.log(data)
-    }
-    const handleGoogleLogin = () =>{
 
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate();
+
+    const handleLogin = data => {
+        const email = data.email;
+        const password = data.password;
+        loginUser(email, password)
+            .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser)
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.log(error.message))
+    }
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(() => {
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.log(error.message))
     }
     return (
         <div>
@@ -45,7 +64,7 @@ const Login = () => {
                                 <input type="password" placeholder="password" {...register('password', { required: true })} className="input input-bordered" />
                                 {errors.password && <p className='text-xs mt-2 text-red-500'>Password is required.</p>}
                             </div>
-                            
+
                             <div className="form-control mt-6">
                                 <button type='submit' className={`btn bg-yellow-600 hover:bg-yellow-700 normal-case border-0 hover:border-0`}>Sign In</button>
                             </div>

@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineUser } from 'react-icons/ai';
+import useAuth from "../../hooks/useAuth";
 
 
 const NavBar = () => {
+    const {user, logOutUser} = useAuth();
     const activeClass = "text-blue-700";
     const inactiveClass = "";
 
@@ -56,9 +58,9 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-circle"><AiOutlineUser /></a>
-                <button className="btn">Logout</button>
-                <Link to="/login"><button className="btn">Login</button></Link>
+                {user? <><a className="btn btn-circle" title={user.displayName}><AiOutlineUser /></a>
+                <button onClick={() => logOutUser()} className="btn">Logout</button> </>:
+                <Link to="/login"><button className="btn">Login</button></Link>}
             </div>
         </div>
     );
