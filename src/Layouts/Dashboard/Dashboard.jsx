@@ -26,10 +26,11 @@ const Dashboard = () => {
                                                             Page content here 
                     ***************************************************************************************/}
                     <Outlet></Outlet>
+                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                 </div>
                 <div className="drawer-side md:border-r">
                     <label htmlFor="my-drawer-2" className="drawer-overlay bg-black"></label>
-                    <ul className="menu flex-nowrap my-6 px-4 w-60 h-full bg-warning space-y-2 text-base-content">
+                    <ul className="menu flex-nowrap py-6 px-4 w-60 h-full bg-warning space-y-2 text-base-content">
                         {/* *********************************************************************************
                                                          Sidebar content here 
                         ***********************************************************************************/}

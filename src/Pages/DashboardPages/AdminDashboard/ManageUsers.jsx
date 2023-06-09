@@ -13,24 +13,36 @@ const ManageUsers = () => {
         return res.data;
     })
 
-    const handleMakeInstructor = async(email) =>{
+    const handleMakeInstructor = async (email, name) => {
         console.log(email)
-        const res = await axios.patch(`http://localhost:5000/users/role/${email}`, {role: "instructor"})
+        const res = await axios.patch(`http://localhost:5000/users/role/${email}`, { role: "instructor" })
         const data = res.data;
-        if(data.modifiedCount> 0){
+        if (data.modifiedCount > 0) {
             refetch();
             Swal.fire({
                 position: 'top',
                 icon: 'success',
-                title: 'Made Instructor successfully!',
+                title: `${name} is instructor now!`,
                 showConfirmButton: false,
                 timer: 1500
-              })
+            })
         }
         console.log(data)
     }
-    const handleMakeAdmin = (email) => {
+    const handleMakeAdmin = async (email, name) => {
         console.log(email)
+        const res = await axios.patch(`http://localhost:5000/users/role/${email}`, { role: "admin" })
+        const data = res.data;
+        if (data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: `${name} is admin now!`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
     }
 
     return (

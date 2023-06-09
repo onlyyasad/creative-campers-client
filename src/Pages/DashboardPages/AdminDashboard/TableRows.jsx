@@ -20,12 +20,12 @@ const TableRows = ({ user, idx, handleMakeAdmin, handleMakeInstructor }) => {
                 <div className="font-bold">{name}</div>
             </td>
             <td>{email}</td>
-            <td>{role}</td>
+            <td className={`${role === "instructor" && "text-warning" || role === "admin" && "text-blue-700"}`}>{role}</td>
             <th>
-                <button onClick={() => handleMakeInstructor(email)} className={`btn btn-warning normal-case btn-xs ${role === "instructor"? "btn-disabled" : ""}`}>Make Instructor</button>
+                <button onClick={() => handleMakeInstructor(email, name)} className={`btn btn-warning normal-case btn-xs ${role === "instructor"? "btn-disabled" : ""}`}>Make Instructor</button>
             </th>
             <th>
-                <button onClick={() => handleMakeAdmin(email)} className={`btn btn-primary normal-case btn-xs ${role === "admin"? "btn-disabled" : ""}`}>Make Admin</button>
+                <button onClick={() => handleMakeAdmin(email, name)} className={`btn btn-primary normal-case btn-xs ${role === "admin"? "btn-disabled" : ""}`}>Make Admin</button>
             </th>
         </tr>
     );
