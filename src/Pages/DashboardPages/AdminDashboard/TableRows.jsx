@@ -1,7 +1,8 @@
 
 
-const TableRows = ({ user, idx }) => {
+const TableRows = ({ user, idx, handleMakeAdmin, handleMakeInstructor }) => {
     const { name, email, photoURL, role } = user;
+    
     return (
         <tr>
             <th>{idx + 1}</th>
@@ -21,10 +22,10 @@ const TableRows = ({ user, idx }) => {
             <td>{email}</td>
             <td>{role}</td>
             <th>
-                <button className={`btn btn-warning normal-case btn-xs ${role === "instructor"? "btn-disabled" : ""}`}>Make Instructor</button>
+                <button onClick={() => handleMakeInstructor(email)} className={`btn btn-warning normal-case btn-xs ${role === "instructor"? "btn-disabled" : ""}`}>Make Instructor</button>
             </th>
             <th>
-                <button className={`btn btn-primary normal-case btn-xs ${role === "admin"? "btn-disabled" : ""}`}>Make Admin</button>
+                <button onClick={() => handleMakeAdmin(email)} className={`btn btn-primary normal-case btn-xs ${role === "admin"? "btn-disabled" : ""}`}>Make Admin</button>
             </th>
         </tr>
     );

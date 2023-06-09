@@ -29,7 +29,7 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side md:border-r">
                     <label htmlFor="my-drawer-2" className="drawer-overlay bg-black"></label>
-                    <ul className="menu flex-nowrap my-6 px-4 w-60 h-full space-y-2 text-base-content">
+                    <ul className="menu flex-nowrap my-6 px-4 w-60 h-full bg-warning space-y-2 text-base-content">
                         {/* *********************************************************************************
                                                          Sidebar content here 
                         ***********************************************************************************/}
