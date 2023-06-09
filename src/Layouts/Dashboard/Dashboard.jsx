@@ -5,12 +5,14 @@ import { HiOutlineClipboardList, HiOutlineMail } from "react-icons/hi";
 import { IoMdBusiness } from "react-icons/io";
 import { BsBoundingBox } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const Dashboard = () => {
+    const [isAdmin, isAdminLoading] = useAdmin();
     const isStudent = false;
     const isInstructor = false;
-    const isAdmin = true;
+    
     const activeClass = "text-white bg-blue-700 shadow-lg py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
     const inactiveClass = "py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
     return (
@@ -18,17 +20,17 @@ const Dashboard = () => {
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center">
-                    {/* *********************************************************************************************
+                    {/* *************************************************************************************
                                                             Page content here 
-                    ***********************************************************************************************/}
+                    ***************************************************************************************/}
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side md:border-r">
                     <label htmlFor="my-drawer-2" className="drawer-overlay bg-black"></label>
                     <ul className="menu flex-nowrap my-6 px-4 w-60 h-full space-y-2 text-base-content">
-                        {/* ******************************************************************************************
+                        {/* *********************************************************************************
                                                          Sidebar content here 
-                        *********************************************************************************************/}
+                        ***********************************************************************************/}
                         <h2 className="text-xl font-bold mb-4">Creative<span className="text-blue-700">Campers</span></h2>
                         <p className="px-3 py-2 text-xs">Admin Panel</p>
                         <li>
@@ -132,8 +134,6 @@ const Dashboard = () => {
                                 </>
                             }
                         </>
-
-
                     </ul>
                 </div>
             </div>
