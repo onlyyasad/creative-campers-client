@@ -6,12 +6,14 @@ import { IoMdBusiness } from "react-icons/io";
 import { BsBoundingBox } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
+import useStudent from "../../hooks/useStudent";
 
 
 const Dashboard = () => {
     const [isAdmin, isAdminLoading] = useAdmin();
-    const isStudent = false;
-    const isInstructor = false;
+    const [isInstructor, isInstructorLoading] = useInstructor();
+    const [isStudent, isStudentLoading] = useStudent();
     
     const activeClass = "text-white bg-blue-700 shadow-lg py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
     const inactiveClass = "py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
