@@ -5,18 +5,11 @@ import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 import { useState } from 'react';
 
-
-
 const Login = () => {
     const { loginUser, googleLogin } = useAuth();
     const [error, setError] = useState("");
-    const [showError, setShowError] = useState("");
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const {register, handleSubmit, formState: { errors }} = useForm();
 
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
