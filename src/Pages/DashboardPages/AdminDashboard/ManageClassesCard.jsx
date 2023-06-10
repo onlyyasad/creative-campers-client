@@ -4,7 +4,7 @@ import { RxCross2 } from 'react-icons/rx';
 
 const ManageClassesCard = ({ singleClass, handleClassStatus, handleFeedbackModal }) => {
 
-    const { _id, name, price, instructor_name, instructor_email, lessons, available_seats, details, image, status, enrolled, feedback } = singleClass;
+    const { _id, name, price, instructor_name, instructor_email, lessons, available_seats, image, status, enrolled } = singleClass;
     return (
         <div className="card card-compact bg-base-100 shadow-xl">
             <figure className="h-40"><img src={image} alt="Album" /></figure>
