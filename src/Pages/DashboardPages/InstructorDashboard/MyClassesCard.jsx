@@ -3,6 +3,10 @@
 const MyClassesCard = ({myClass}) => {
     
     const {_id, name, price, instructor_name, instructor_email, lessons, available_seats, details, image, status, enrolled, feedback} = myClass;
+
+    const handleUpdateClass = (id) => {
+        console.log(id)
+    }
     return (
         <div className="card card-compact w-full bg-base-100 shadow-xl">
             <figure className="h-60"><img src={image} alt="Shoes" /></figure>
@@ -22,7 +26,7 @@ const MyClassesCard = ({myClass}) => {
                 <div className="card-actions justify-between items-center">
                     <p className="font-bold text-lg text-blue-700">${price}</p>
                     <p className="font-bold">Status: <span className={`capitalize font-normal ${status === "pending" && "text-warning" || status === "denied" && "text-danger" || status === "approved" && "text-success"}`}>{status}</span></p>
-                    <button className="btn btn-sm normal-case btn-warning">Update</button>
+                    <button onClick={() => handleUpdateClass(_id)} className="btn btn-sm normal-case btn-warning">Update</button>
                 </div>
             </div>
         </div>
