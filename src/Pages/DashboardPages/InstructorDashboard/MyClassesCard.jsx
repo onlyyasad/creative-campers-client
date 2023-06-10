@@ -13,19 +13,20 @@ const MyClassesCard = ({myClass}) => {
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p>{details}</p>
+                <div>
+                    {
+                        feedback && <div className="border border-warning rounded-md p-4"><h1 className="font-bold mb-2">Feedback:</h1><p className="italic">{feedback}</p></div>
+                    }
+                </div>
                 <div className="flex justify-between items-center gap-4">
                     <p>Lessons: <span>{lessons}</span></p>
                     <p>Available Seats: <span>{available_seats}</span></p>
                     <p>Enrolled: <span>{enrolled}</span></p>
                 </div>
-                <div>
-                    {
-                        feedback && <p>{feedback}</p>
-                    }
-                </div>
+                
                 <div className="card-actions justify-between items-center">
                     <p className="font-bold text-lg text-blue-700">${price}</p>
-                    <p className="font-bold">Status: <span className={`capitalize font-normal ${status === "pending" && "text-warning" || status === "denied" && "text-danger" || status === "approved" && "text-success"}`}>{status}</span></p>
+                    <p className="font-bold">Status: <span className={`capitalize font-normal ${status === "pending" && "text-warning" || status === "denied" && "text-error" || status === "approved" && "text-success"}`}>{status}</span></p>
                     <button onClick={() => handleUpdateClass(_id)} className="btn btn-sm normal-case btn-warning">Update</button>
                 </div>
             </div>

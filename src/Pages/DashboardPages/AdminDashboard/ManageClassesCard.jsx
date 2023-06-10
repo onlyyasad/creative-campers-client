@@ -2,7 +2,7 @@ import { BsCheckLg } from 'react-icons/bs';
 import { TbAlertCircle } from 'react-icons/tb';
 import { RxCross2 } from 'react-icons/rx';
 
-const ManageClassesCard = ({ singleClass, handleClassStatus }) => {
+const ManageClassesCard = ({ singleClass, handleClassStatus, handleFeedbackModal }) => {
 
     const { _id, name, price, instructor_name, instructor_email, lessons, available_seats, details, image, status, enrolled, feedback } = singleClass;
     return (
@@ -45,7 +45,7 @@ const ManageClassesCard = ({ singleClass, handleClassStatus }) => {
                 <div className="card-actions justify-between mt-4">
                     <button onClick={() => handleClassStatus("approved", _id)} className={`btn btn-xs normal-case btn-success rounded-xl ${status !== "pending" && "btn-disabled bg-base-200 border-base-200"}`}>Approve</button>
                     <button onClick={() => handleClassStatus("denied", _id)} className={`btn btn-xs normal-case btn-error rounded-xl ${status !== "pending" && "btn-disabled bg-base-200 border-base-200"}`}>Deny</button>
-                    <button className="btn btn-xs normal-case btn-info rounded-xl">Feedback</button>
+                    <label htmlFor="my_modal_6" onClick={() => handleFeedbackModal(singleClass)} className="btn btn-xs normal-case btn-info rounded-xl">Feedback</label>
                 </div>
             </div>
         </div>
