@@ -29,7 +29,6 @@ const ClassCard = ({singleClass, handleSelectClass}) => {
 
                 <div className="card-actions mt-4">
                     <button onClick={() => handleSelectClass(singleClass)} className={`btn btn-xs w-full normal-case btn-success rounded-xl`}>Select</button>
-                    
                 </div>
             </div>
         </div>

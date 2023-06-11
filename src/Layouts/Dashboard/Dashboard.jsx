@@ -74,10 +74,10 @@ const Dashboard = () => {
                                     </li>
                                     <li>
                                         <NavLink
-                                            to="/dashboard/payment"
+                                            to="/dashboard/payment-history"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
                                             <AiOutlineSound />
-                                            Payment
+                                            Payment History
                                         </NavLink>
                                     </li>
                                 </>
