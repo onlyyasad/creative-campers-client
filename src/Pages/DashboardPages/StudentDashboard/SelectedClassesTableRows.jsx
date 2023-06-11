@@ -1,6 +1,6 @@
 
 
-const SelectedClassesTableRows = ({singleClass, idx}) => {
+const SelectedClassesTableRows = ({singleClass, idx, handleDeleteSelectedClass}) => {
     const {_id, classId, name, price, image} = singleClass;
     return (
         <tr>
@@ -20,7 +20,7 @@ const SelectedClassesTableRows = ({singleClass, idx}) => {
             </td>
             <td>${price}</td>
             <th>
-                <button  className={`btn btn-warning normal-case btn-xs `}>Delete</button>
+                <button onClick={() => handleDeleteSelectedClass(_id)}  className={`btn btn-warning normal-case btn-xs `}>Delete</button>
             </th>
             <th>
                 <button  className={`btn btn-primary normal-case btn-xs `}>Pay</button>
