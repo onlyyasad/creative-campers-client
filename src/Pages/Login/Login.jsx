@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaGithub } from 'react-icons/fa';
+import { BiShow, BiHide } from 'react-icons/bi';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 import { useState } from 'react';
@@ -8,8 +9,9 @@ import { useState } from 'react';
 const Login = () => {
     const { loginUser, googleLogin } = useAuth();
     const [error, setError] = useState("");
+    const [show, setShow] = useState(false)
 
-    const {register, handleSubmit, formState: { errors }} = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -26,10 +28,10 @@ const Login = () => {
                 setError("")
             })
             .catch(error => {
-                if(error.code === "auth/wrong-password"){
+                if (error.code === "auth/wrong-password") {
                     setError("Wrong password")
                 }
-                if(error.code === "auth/user-not-found"){
+                if (error.code === "auth/user-not-found") {
                     setError("No user registered with this Email")
                 }
             })
@@ -69,13 +71,16 @@ const Login = () => {
                                 <input type="email" placeholder="email" {...register('email', { required: true })} className="input input-bordered" />
                                 {errors.email && <p className='text-xs mt-2 text-red-500'>Email is required.</p>}
                             </div>
-                            <div className="form-control">
+                            <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" {...register('password', { required: true })} className="input input-bordered" />
-                                {errors.password && <p className='text-xs mt-2 text-red-500'>Password is required.</p>}
+                                <input type={show ? "text" : "password"} placeholder="password" {...register('password', { required: true })} className="input input-bordered"></input>
+                                {!show ?
+                                    <BiShow onClick={() => setShow(!show)} className='absolute text-xl bottom-3 right-3' /> :
+                                    <BiHide onClick={() => setShow(!show)} className='absolute text-xl bottom-3 right-3' />}
                             </div>
+                            {errors.password && <p className='text-xs mt-2 text-red-500'>Password is required.</p>}
                             <div>
                                 <p className='text-xs text-red-600'>{error}</p>
                             </div>
