@@ -18,7 +18,7 @@ const Classes = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const handleEnroll = singleClass => {
+    const handleSelectClass = singleClass => {
         const { _id, name, price, image } = singleClass;
         console.log(singleClass)
         const selectedClass = { classId: _id, name, image, price, email: user?.email }
@@ -37,7 +37,7 @@ const Classes = () => {
                     console.log(error.response.status)
                     if (error.response.status === 403) {
                         Swal.fire(
-                            'Already selected!',
+                            'Already selected or enrolled!',
                         )
                     }
                 })
@@ -66,7 +66,7 @@ const Classes = () => {
                 <h1 className="uppercase font-bold text-3xl my-8 text-center">Classes</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
                     {
-                        classes?.map(singleClass => <ClassCard key={singleClass?._id} singleClass={singleClass} handleEnroll={handleEnroll}></ClassCard>)
+                        classes?.map(singleClass => <ClassCard key={singleClass?._id} singleClass={singleClass} handleSelectClass={handleSelectClass}></ClassCard>)
                     }
                 </div>
             </div>

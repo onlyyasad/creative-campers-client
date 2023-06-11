@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 
 
 const SelectedClassesTableRows = ({singleClass, idx, handleDeleteSelectedClass}) => {
-    const {_id, classId, name, price, image} = singleClass;
+    const {_id, name, price, image} = singleClass;
     return (
         <tr>
             <th>{idx + 1}</th>
@@ -23,7 +24,7 @@ const SelectedClassesTableRows = ({singleClass, idx, handleDeleteSelectedClass})
                 <button onClick={() => handleDeleteSelectedClass(_id)}  className={`btn btn-warning normal-case btn-xs `}>Delete</button>
             </th>
             <th>
-                <button  className={`btn btn-primary normal-case btn-xs `}>Pay</button>
+                <Link to={`/dashboard/payment/${_id}`}><button className={`btn btn-primary normal-case btn-xs `}>Pay</button></Link>
             </th>
         </tr>
     );

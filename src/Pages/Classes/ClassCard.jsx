@@ -1,6 +1,6 @@
 
 
-const ClassCard = ({singleClass, handleEnroll}) => {
+const ClassCard = ({singleClass, handleSelectClass}) => {
     const { name, price, instructor_name, instructor_email, lessons, available_seats, details, image, enrolled } = singleClass;
 
     
@@ -28,7 +28,7 @@ const ClassCard = ({singleClass, handleEnroll}) => {
                 </div>
 
                 <div className="card-actions mt-4">
-                    <button onClick={() => handleEnroll(singleClass)} className={`btn btn-xs w-full normal-case btn-success rounded-xl`}>Select</button>
+                    <button onClick={() => handleSelectClass(singleClass)} className={`btn btn-xs w-full normal-case btn-success rounded-xl`}>Select</button>
                     
                 </div>
             </div>

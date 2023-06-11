@@ -1,25 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../hooks/useAuth";
+
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useState } from "react";
+
 import SelectedClassesTableRows from "./SelectedClassesTableRows";
 import Swal from "sweetalert2";
+import useMySelectedClasses from "../../../hooks/useMySelectedClasses";
 
 
 const MySelectedClasses = () => {
-    const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const [classes, setClasses] = useState([])
-
-    const { data: selectedClasses = [], refetch } = useQuery({
-        queryKey: ['selectedClass', user?.email],
-        enabled: !loading,
-        queryFn: async () => {
-            const response = await axiosSecure(`/selectedClasses?email=${user?.email}`)
-            setClasses(response.data)
-            return response.data
-        }
-    })
+    const [selectedClasses, refetch] = useMySelectedClasses()
 
     const handleDeleteSelectedClass = id => {
         Swal.fire({
@@ -50,7 +39,7 @@ const MySelectedClasses = () => {
 
     return (
         <div className="w-full">
-            My Selected Classes: {classes.length}
+            My Selected Classes: {selectedClasses.length}
 
             <div>
                 <div className="overflow-x-auto">
@@ -71,7 +60,7 @@ const MySelectedClasses = () => {
                         <tbody>
                             {/* row 1 */}
                             {
-                                classes?.map((singleClass, idx) => <SelectedClassesTableRows 
+                                selectedClasses?.map((singleClass, idx) => <SelectedClassesTableRows 
                                 key={singleClass._id} 
                                 singleClass={singleClass} 
                                 idx={idx} 
