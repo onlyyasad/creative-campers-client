@@ -1,11 +1,15 @@
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 
 const ClassCard = ({singleClass, handleSelectClass}) => {
     const { name, price, instructor_name, instructor_email, lessons, available_seats, details, image, enrolled } = singleClass;
+    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isInstructor, isInstructorLoading] = useInstructor();
 
     
     return (
-        <div className="card card-compact bg-base-100 shadow-xl">
+        <div className={`card card-compact ${available_seats === 0 && "bg-red-200 border-red-600 border"} bg-base-100 shadow-xl`}>
             <figure className="h-40"><img src={image} alt="Album" /></figure>
             <div className="card-body">
                 <h2 className=" font-bold">{name}</h2>
@@ -28,7 +32,7 @@ const ClassCard = ({singleClass, handleSelectClass}) => {
                 </div>
 
                 <div className="card-actions mt-4">
-                    <button onClick={() => handleSelectClass(singleClass)} className={`btn btn-xs w-full normal-case btn-success rounded-xl`}>Select</button>
+                    <button onClick={() => handleSelectClass(singleClass)} className={`btn btn-xs w-full normal-case btn-success rounded-xl ${available_seats === 0 && "btn-disabled bg-base-200 border-base-200 text-gray-500" || isAdmin && "btn-disabled bg-base-200 border-base-200 text-gray-500" || isInstructor && "btn-disabled bg-base-200 border-base-200 text-gray-500"}`}>Select</button>
                 </div>
             </div>
         </div>
