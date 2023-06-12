@@ -25,7 +25,7 @@ const Dashboard = () => {
                                                             Page content here 
                     ***************************************************************************************/}
                     <Outlet></Outlet>
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    <label htmlFor="my-drawer-2" className="btn btn-warning normal-case drawer-button lg:hidden">Open Menu</label>
                 </div>
                 <div className="drawer-side md:border-r">
                     <label htmlFor="my-drawer-2" className="drawer-overlay bg-black"></label>
