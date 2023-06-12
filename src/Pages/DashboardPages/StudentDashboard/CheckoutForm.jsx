@@ -119,7 +119,7 @@ const CheckoutForm = ({ price, classToPay }) => {
                         },
                     }}
                 />
-                <button className="btn btn-secondary btn-sm mt-8" type="submit" disabled={!stripe || !clientSecret || processing}>
+                <button className="btn btn-warning btn-sm mt-8" type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
