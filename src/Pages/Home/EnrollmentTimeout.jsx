@@ -13,8 +13,8 @@ const EnrollmentTimeout = () => {
                 <div className="hero-overlay bg-base-100"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-screen-md">
-                        <h1 className="mb-5 text-3xl  text-black font-bold">Enrollment Ends At</h1>
-                        <p className='text-black'>Enroll to your favorite classes before the time ends and seat availability becomes zero</p>
+                        <h1 className="mb-5 text-3xl text-warning font-bold">Enrollment Ends At</h1>
+                        <p className='text-warning'>Enroll to your favorite classes before the time ends and seat availability becomes zero</p>
                         <div className=' text-warning w-full flex justify-center items-center gap-4 md:gap-6 px-4 py-8 lg:px-10 lg:py-12 rounded-xl lg:rounded-3xl'>
                             <div>
                                 <p className='text-3xl md:text-7xl'>{days}</p>

@@ -5,6 +5,7 @@ import { BiShow, BiHide } from 'react-icons/bi';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 import { useState } from 'react';
+import signinImage from "../../assets/signin.svg"
 
 const Login = () => {
     const { loginUser, googleLogin } = useAuth();
@@ -50,9 +51,9 @@ const Login = () => {
             .catch(error => console.log(error.message))
     }
     return (
-        <div>
+        <div className='container mx-auto py-20 flex flex-col md:flex-row justify-between items-center'>
             <div>
-
+                <img src={signinImage} alt="" />
             </div>
             <div className="hero min-h-screen py-8 bg-base-100">
                 <div className="hero-content flex-col lg:flex-row-reverse">
@@ -85,7 +86,7 @@ const Login = () => {
                                 <p className='text-xs text-red-600'>{error}</p>
                             </div>
                             <div className="form-control mt-6">
-                                <button type='submit' className={`btn bg-yellow-600 hover:bg-yellow-700 normal-case border-0 hover:border-0`}>Sign In</button>
+                                <button type='submit' className={`btn btn-warning normal-case border-0 hover:border-0`}>Sign In</button>
                             </div>
                         </form>
 

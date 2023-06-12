@@ -5,6 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import signinImage from "../../assets/signin.svg"
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token
 
@@ -101,7 +102,10 @@ const Registration = () => {
             .catch(error => console.log(error.message))
     }
     return (
-        <div>
+        <div className='container mx-auto py-20 flex flex-col md:flex-row justify-between items-center'>
+            <div>
+                <img src={signinImage} alt="" />
+            </div>
             <div className="hero min-h-screen py-8 bg-base-100">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
@@ -154,7 +158,7 @@ const Registration = () => {
                                 <p className='text-xs text-red-600'>{error}</p>
                             </div>
                             <div className="form-control mt-6">
-                                <button type='submit' className="btn bg-yellow-600 hover:bg-yellow-700 normal-case border-0 hover:border-0">Sign Up</button>
+                                <button type='submit' className="btn btn-warning normal-case border-0 hover:border-0">Sign Up</button>
                             </div>
                         </form>
 

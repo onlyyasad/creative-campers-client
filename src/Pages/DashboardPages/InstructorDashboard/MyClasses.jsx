@@ -4,11 +4,12 @@ import MyClassesCard from "./MyClassesCard";
 
 const MyClasses = () => {
     const [myClasses] = useMyClasses()
-    console.log(myClasses)
+   
     return (
-        <div className="w-full p-8">
-            <div>
-                <h1>My Total Classes {myClasses.length}</h1>
+        <div className="w-full space-y-4 p-4">
+            <div className="flex items-center justify-start text-xl gap-2 font-semibold">
+                <div className="h-6 w-2 bg-warning"></div>
+                <h2>My Classes</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {

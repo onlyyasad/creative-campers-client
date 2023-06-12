@@ -14,8 +14,8 @@ const Dashboard = () => {
     const [isInstructor] = useInstructor();
     const [isStudent] = useStudent();
     
-    const activeClass = "text-white bg-blue-700 shadow-lg py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
-    const inactiveClass = "py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
+    const activeClass = "text-white bg-blue-700 shadow-lg py-2 hover:bg-blue-700 hover:text-white  duration-300 focus:bg-blue-700";
+    const inactiveClass = "py-2 hover:bg-blue-700 hover:text-white duration-300 focus:bg-blue-700";
     return (
         <div className="font-poppins container mx-auto">
             <div className="drawer lg:drawer-open">
@@ -33,7 +33,7 @@ const Dashboard = () => {
                         {/* *********************************************************************************
                                                          Sidebar content here 
                         ***********************************************************************************/}
-                        <h2 className="text-xl font-bold mb-4">Creative<span className="text-blue-700">Campers</span></h2>
+                        <p className="normal-case mb-4 text-xs"> <span className="font-bold text-xl">Creative</span><span className="text-blue-700 font-bold text-xl">Campers</span> <br /> by BlueDot Academy</p>
                         {
                             isAdmin && <p className="px-3 py-2 text-xs">Admin Panel</p> ||
                             isInstructor && <p className="px-3 py-2 text-xs">Instructor Panel</p> ||

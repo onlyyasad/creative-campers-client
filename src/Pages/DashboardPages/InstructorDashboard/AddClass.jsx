@@ -47,9 +47,13 @@ const AddClass = () => {
             })
     };
     return (
-        <div className="w-full">
+        <div className="w-full space-y-4 p-4">
+            <div className="flex items-center justify-start text-xl gap-2 font-semibold">
+                <div className="h-6 w-2 bg-warning"></div>
+                <h2>Add a Class</h2>
+            </div>
             <div>
-                <div>
+                <div className='flex justify-center'>
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-8 max-w-xl">
                         <div className="form-control w-full ">
                             <label className="label">
@@ -105,7 +109,7 @@ const AddClass = () => {
                                 <input type="number" placeholder='Price' {...register("price", { required: true })} className="input input-bordered w-full " />
                             </div>
                         </div>
-                        <input className="btn btn-primary normal-case w-full" type="submit" value="Add Class" />
+                        <input className="btn btn-warning normal-case w-full" type="submit" value="Add Class" />
                     </form>
                 </div>
             </div>

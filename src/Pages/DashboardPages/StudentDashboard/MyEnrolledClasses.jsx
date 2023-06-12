@@ -4,19 +4,22 @@ const MyEnrolledClasses = () => {
     const [enrolledClasses] = usePaymentHistory();
 
     return (
-        <div className="w-full">
-            My Enrolled Classes {enrolledClasses.length}
+        <div className="w-full space-y-4 p-4">
+            <div className="flex items-center justify-start text-xl gap-2 font-semibold">
+                <div className="h-6 w-2 bg-warning"></div>
+                <h2>My Enrolled Classes</h2>
+            </div>
             <div>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto flex items-center max-w-sm md:max-w-md lg:max-w-full rounded-lg">
                     <table className="table">
                         {/* head */}
-                        <thead>
+                        <thead className="bg-warning">
                             <tr>
                                 <th>
                                     #
                                 </th>
                                 <th>Image</th>
-                                <th>Name</th>
+                                <th>Class Name</th>
                                 <th>Price</th>
                             </tr>
                         </thead>

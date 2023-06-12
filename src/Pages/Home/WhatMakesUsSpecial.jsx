@@ -50,9 +50,16 @@ const WhatMakesUsSpecial = () => {
                         </div>
 
                     </div>
-                    <div className="flex justify-center items-center">
+
+                    <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="flex justify-center items-center"
+                    >
                         <img className="w-[80%]" src={wmspecial} alt="" />
-                    </div>
+                    </ motion.div>
+
+
                     <div className="space-y-4">
                         <div className="flex items-center gap-4">
                             <motion.div

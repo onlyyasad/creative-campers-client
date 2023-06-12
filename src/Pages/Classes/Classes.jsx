@@ -5,6 +5,7 @@ import ClassCard from "./ClassCard";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import bannerImg from "../../assets/class.svg";
 
 
 const Classes = () => {
@@ -17,6 +18,9 @@ const Classes = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
+
+    const bannerTitle = "Interactive Classes";
+    const bannerTag = "Engage, collaborate, and learn in our dynamic interactive classes at CreativeCampers. Experience hands-on activities, group discussions, and immersive learning. Foster camaraderie and enhance understanding through active participation. Join us for an enjoyable and enriching interactive learning experience.";
 
     const handleSelectClass = singleClass => {
         const { _id, name, price, image } = singleClass;
@@ -61,8 +65,8 @@ const Classes = () => {
 
     return (
         <div>
-            <PageBanner></PageBanner>
-            <div>
+            <PageBanner bannerImg={bannerImg} bannerTitle={bannerTitle} bannerTag={bannerTag}></PageBanner>
+            <div className="container mx-auto py-12">
                 <h1 className="uppercase font-bold text-3xl my-8 text-center">Classes</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
                     {

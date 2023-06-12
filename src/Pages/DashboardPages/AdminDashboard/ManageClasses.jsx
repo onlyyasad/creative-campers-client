@@ -52,8 +52,11 @@ const ManageClasses = () => {
     }
 
     return (
-        <div className="w-full p-8 space-y-4">
-            Total Classes: {classes.length}
+        <div className="w-full space-y-4 p-4">
+            <div className="flex items-center justify-start text-xl gap-2 font-semibold">
+                <div className="h-6 w-2 bg-warning"></div>
+                <h2>Manage Classes</h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {
                     classes?.map(singleClass => <ManageClassesCard key={singleClass?._id} singleClass={singleClass} handleClassStatus={handleClassStatus} handleFeedbackModal={handleFeedbackModal}></ManageClassesCard>)

@@ -63,7 +63,7 @@ const PopularClasses = () => {
         <div className="container mx-auto my-8">
             <div className="my-8">
                 <h1 className="uppercase font-bold text-3xl text-center">Popular Classes</h1>
-                <p className='text-black text-center'>Here are the popular classes based on the students enrolled to each class.</p>
+                <p className='text-center'>Here are the popular classes based on the students enrolled to each class.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
                 {
