@@ -9,7 +9,7 @@ const ClassCard = ({singleClass, handleSelectClass}) => {
 
     
     return (
-        <div className={`card card-compact ${available_seats === 0 && "bg-red-200 border-red-600 border"} bg-base-100 shadow-xl`}>
+        <div className={`card ${available_seats === 0 && "bg-red-200 border-red-600 border"} bg-base-100 shadow-xl`}>
             <figure className="h-40"><img src={image} alt="Album" /></figure>
             <div className="card-body">
                 <h2 className=" font-bold">{name}</h2>

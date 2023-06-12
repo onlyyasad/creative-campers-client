@@ -82,6 +82,7 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                {/* Dark mode, light mode toggle button */}
                 <label className="swap swap-rotate">
 
                     {/* this hidden checkbox controls the state */}

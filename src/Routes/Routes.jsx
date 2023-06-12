@@ -21,6 +21,7 @@ import StudentRoute from "./StudentRoute";
 import InstructorRoute from "./InstructorRoute";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import Error from "../Pages/Error/Error";
 
 export const router = createBrowserRouter([
     {
@@ -46,13 +47,8 @@ export const router = createBrowserRouter([
             {
                 path: "registration",
                 element: <Registration></Registration>
-            },
-            {
-                path: "*",
-                element: <div className="flex justify-center items-center min-h-screen">
-                    <h1 className="text-center text-5xl text-red-400 font-poppins">404 Error</h1>
-                </div>
             }
+            
         ]
     },
     {
@@ -107,8 +103,6 @@ export const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <div className="flex justify-center items-center min-h-screen">
-            <h1 className="text-center text-5xl text-red-400 font-poppins">404 Error</h1>
-        </div>
+        element: <Error></Error>
     }
 ]);
