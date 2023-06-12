@@ -37,7 +37,7 @@ const ManageClassesCard = ({ singleClass, handleClassStatus, handleFeedbackModal
                     <p className="">Price: <span>${price}</span></p>
                     <p className="text-end">Lessons: <span>{lessons}</span></p>
                 </div>
-                <div className="flex justify-between items-center gap-4">
+                <div className="flex justify-between flex-grow items-center gap-4">
                     <p className="">Available Seats: <span>{available_seats}</span></p>
                     <p className="text-end">Enrolled: <span>{enrolled}</span></p>
                 </div>

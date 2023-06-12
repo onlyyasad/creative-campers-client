@@ -17,6 +17,10 @@ import MyClasses from "../Pages/DashboardPages/InstructorDashboard/MyClasses";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import PaymentHistory from "../Pages/DashboardPages/StudentDashboard/PaymentHistory";
+import StudentRoute from "./StudentRoute";
+import InstructorRoute from "./InstructorRoute";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -42,56 +46,62 @@ export const router = createBrowserRouter([
             {
                 path: "registration",
                 element: <Registration></Registration>
+            },
+            {
+                path: "*",
+                element: <div className="flex justify-center items-center min-h-screen">
+                    <h1 className="text-center text-5xl text-red-400 font-poppins">404 Error</h1>
+                </div>
             }
         ]
     },
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
                 path: "/dashboard/student",
-                element: <StudentDashboard></StudentDashboard>
+                element: <StudentRoute><StudentDashboard></StudentDashboard></StudentRoute>
             },
             {
                 path: "/dashboard/my-selected-classes",
-                element: <MySelectedClasses></MySelectedClasses>
+                element: <StudentRoute><MySelectedClasses></MySelectedClasses></StudentRoute>
             },
             {
                 path: "/dashboard/my-enrolled-classes",
-                element: <MyEnrolledClasses></MyEnrolledClasses>
+                element: <StudentRoute><MyEnrolledClasses></MyEnrolledClasses></StudentRoute>
             },
             {
                 path: "/dashboard/payment/:id",
-                element: <Payment></Payment>
+                element: <StudentRoute><Payment></Payment></StudentRoute>
             },
             {
                 path: "/dashboard/payment-history",
-                element: <PaymentHistory></PaymentHistory>
+                element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
             },
             {
                 path: "/dashboard/instructor",
-                element: <InstructorDashboard></InstructorDashboard>
+                element: <InstructorRoute><InstructorDashboard></InstructorDashboard></InstructorRoute>
             },
             {
                 path: "/dashboard/add-class",
-                element: <AddClass></AddClass>
+                element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
             },
             {
                 path: "/dashboard/my-classes",
-                element: <MyClasses></MyClasses>
+                element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
             },
             {
                 path: "/dashboard/admin",
-                element: <AdminDashboard></AdminDashboard>
+                element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>
             },
             {
                 path: "/dashboard/manage-classes",
-                element: <ManageClasses></ManageClasses>
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             },
             {
                 path: "/dashboard/manage-users",
-                element: <ManageUsers></ManageUsers>
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             }
         ]
     },

@@ -4,8 +4,8 @@ import useInstructor from "../../hooks/useInstructor";
 
 const ClassCard = ({singleClass, handleSelectClass}) => {
     const { name, price, instructor_name, instructor_email, lessons, available_seats, details, image, enrolled } = singleClass;
-    const [isAdmin, isAdminLoading] = useAdmin();
-    const [isInstructor, isInstructorLoading] = useInstructor();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     
     return (

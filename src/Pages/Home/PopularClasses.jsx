@@ -14,8 +14,9 @@ const PopularClasses = () => {
     const navigate = useNavigate();
 
     useEffect(() =>{
-        axios.get("http://localhost:5000/classes/popular")
-        .then(res => setPopularClasses(res.data))
+        fetch("http://localhost:5000/classes/popular")
+        .then(res => res.json())
+        .then(data => setPopularClasses(data))
     }, [])
 
     const handleSelectClass = singleClass => {
