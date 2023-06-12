@@ -11,7 +11,7 @@ const Classes = () => {
     const [classes, setClasses] = useState();
     const { user } = useAuth();
     useEffect(() => {
-        axios.get("http://localhost:5000/classes")
+        axios.get("https://assignment-12-server-psi-three.vercel.app/classes")
             .then(res => setClasses(res.data))
     }, [])
 
@@ -23,7 +23,7 @@ const Classes = () => {
         console.log(singleClass)
         const selectedClass = { classId: _id, name, image, price, email: user?.email }
         if (user) {
-            axios.post("http://localhost:5000/selectedClasses", selectedClass)
+            axios.post("https://assignment-12-server-psi-three.vercel.app/selectedClasses", selectedClass)
                 .then(res => {
                     if (res.data.insertedId) {
                         Swal.fire(

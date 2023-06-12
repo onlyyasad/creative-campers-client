@@ -14,7 +14,7 @@ const PopularClasses = () => {
     const navigate = useNavigate();
 
     useEffect(() =>{
-        fetch("http://localhost:5000/classes/popular")
+        fetch("https://assignment-12-server-psi-three.vercel.app/classes/popular")
         .then(res => res.json())
         .then(data => setPopularClasses(data))
     }, [])
@@ -24,7 +24,7 @@ const PopularClasses = () => {
         console.log(singleClass)
         const selectedClass = { classId: _id, name, image, price, email: user?.email }
         if (user) {
-            axios.post("http://localhost:5000/selectedClasses", selectedClass)
+            axios.post("https://assignment-12-server-psi-three.vercel.app/selectedClasses", selectedClass)
                 .then(res => {
                     if (res.data.insertedId) {
                         Swal.fire(

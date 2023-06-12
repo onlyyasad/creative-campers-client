@@ -1,19 +1,18 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { AiOutlineHome, AiOutlineSound, AiOutlinePieChart } from "react-icons/ai";
-import { BiDiamond, BiStats, BiBell } from "react-icons/bi";
-import { HiOutlineClipboardList, HiOutlineMail } from "react-icons/hi";
-import { IoMdBusiness } from "react-icons/io";
-import { BsBoundingBox } from "react-icons/bs";
-import { FiSettings } from "react-icons/fi";
+import { AiOutlineHome, AiOutlineUserSwitch, AiOutlineSelect, AiOutlineUsergroupAdd, AiOutlineAppstoreAdd } from "react-icons/ai";
+import { BiSelection, BiWallet } from "react-icons/bi";
+import {  BsCheckSquare } from "react-icons/bs";
+import { FiSettings, FiUser } from "react-icons/fi";
+import { FaRegUser } from "react-icons/fa";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import useStudent from "../../hooks/useStudent";
 
 
 const Dashboard = () => {
-    const [isAdmin, isAdminLoading] = useAdmin();
-    const [isInstructor, isInstructorLoading] = useInstructor();
-    const [isStudent, isStudentLoading] = useStudent();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    const [isStudent] = useStudent();
     
     const activeClass = "text-white bg-blue-700 shadow-lg py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
     const inactiveClass = "py-2 hover:bg-blue-700 hover:text-white hover:shadow-lg hover:shadow-blue-200 shadow-blue-300 duration-300 focus:bg-blue-700";
@@ -30,12 +29,16 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side md:border-r">
                     <label htmlFor="my-drawer-2" className="drawer-overlay bg-black"></label>
-                    <ul className="menu flex-nowrap py-6 px-4 w-60 h-full bg-warning space-y-2 text-base-content">
+                    <ul className="menu flex-nowrap py-6 px-4 w-60 h-full bg-base-100 space-y-2 text-base-content">
                         {/* *********************************************************************************
                                                          Sidebar content here 
                         ***********************************************************************************/}
                         <h2 className="text-xl font-bold mb-4">Creative<span className="text-blue-700">Campers</span></h2>
-                        <p className="px-3 py-2 text-xs">Admin Panel</p>
+                        {
+                            isAdmin && <p className="px-3 py-2 text-xs">Admin Panel</p> ||
+                            isInstructor && <p className="px-3 py-2 text-xs">Instructor Panel</p> ||
+                            isStudent && <p className="px-3 py-2 text-xs">Student Panel</p>
+                        }
                         <li>
                             <NavLink
                                 to="/"
@@ -52,7 +55,7 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/student"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                            <BiBell />
+                                            <FaRegUser />
                                             Student Dashboard
                                         </NavLink>
                                     </li>
@@ -60,7 +63,7 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/my-selected-classes"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                            <BiStats />
+                                            <AiOutlineSelect />
                                             My Selected Classes
                                         </NavLink>
                                     </li>
@@ -68,7 +71,7 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/my-enrolled-classes"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                            <IoMdBusiness />
+                                            <BsCheckSquare />
                                             My Enrolled Classes
                                         </NavLink>
                                     </li>
@@ -76,7 +79,7 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/payment-history"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                            <AiOutlineSound />
+                                            <BiWallet />
                                             Payment History
                                         </NavLink>
                                     </li>
@@ -87,7 +90,7 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/instructor"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                            <BiDiamond />
+                                            <FiUser />
                                             Instructor Dashboard
                                         </NavLink>
                                     </li>
@@ -95,7 +98,7 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/add-class"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                            <BsBoundingBox />
+                                            <AiOutlineAppstoreAdd />
                                             Add a Class
                                         </NavLink>
                                     </li>
@@ -103,7 +106,7 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/my-classes"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                            <AiOutlinePieChart />
+                                            <BiSelection />
                                             My Classes
                                         </NavLink>
                                     </li>
@@ -114,7 +117,7 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/admin"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                            <HiOutlineClipboardList />
+                                            <AiOutlineUserSwitch />
                                             Admin Dashboard
                                         </NavLink>
                                     </li>
@@ -130,7 +133,7 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/manage-users"
                                             className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-                                            <HiOutlineMail />
+                                            <AiOutlineUsergroupAdd />
                                             Manage Users
                                         </NavLink>
                                     </li>

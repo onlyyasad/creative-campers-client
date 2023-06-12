@@ -41,7 +41,7 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 const saveUser = { name: user.displayName, email: user.email, photoURL: user.photoURL, role: "student" };
-                axios.post("http://localhost:5000/users", saveUser)
+                axios.post("https://assignment-12-server-psi-three.vercel.app/users", saveUser)
                     .then(() => {
                         setError("");
                         navigate(from, { replace: true })

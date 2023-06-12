@@ -12,7 +12,7 @@ const ManageClasses = () => {
 
     const handleClassStatus = async (status, id) => {
         console.log(status, id)
-        const res = await axios.patch(`http://localhost:5000/classes/status/${id}`, { status: status })
+        const res = await axios.patch(`https://assignment-12-server-psi-three.vercel.app/classes/status/${id}`, { status: status })
         const data = res.data;
         if (data.modifiedCount > 0) {
             refetch();
@@ -35,7 +35,7 @@ const ManageClasses = () => {
         const form = event.target;
         const feedback = form.feedback.value;
         console.log(feedback)
-        const res = await axios.patch(`http://localhost:5000/classes/feedback/${feedbackClass._id}`, { feedback: feedback })
+        const res = await axios.patch(`https://assignment-12-server-psi-three.vercel.app/classes/feedback/${feedbackClass._id}`, { feedback: feedback })
         const data = res.data;
         if (data.modifiedCount > 0) {
             refetch();

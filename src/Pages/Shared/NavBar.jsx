@@ -1,11 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
+import useStudent from "../../hooks/useStudent";
 
 
 const NavBar = () => {
     const { user, logOutUser } = useAuth();
-    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
+    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    const [isStudent] = useStudent();
+
     const activeClass = "text-blue-700";
     const inactiveClass = "";
 
@@ -54,13 +61,15 @@ const NavBar = () => {
                 Classes
             </NavLink>
         </li>
-        <li>
+        {
+            user && <li>
             <NavLink
-                to="/dashboard"
+                to={isAdmin && "/dashboard/admin" || isInstructor && "/dashboard/instructor" || isStudent && "/dashboard/student"}
                 className={({ isActive }) => isActive ? activeClass : inactiveClass}>
                 Dashboard
             </NavLink>
         </li>
+        }
 
     </>
     return (

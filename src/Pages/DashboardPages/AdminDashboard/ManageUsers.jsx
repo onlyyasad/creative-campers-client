@@ -15,7 +15,7 @@ const ManageUsers = () => {
 
     const handleMakeInstructor = async (email, name) => {
         console.log(email)
-        const res = await axios.patch(`http://localhost:5000/users/role/${email}`, { role: "instructor" })
+        const res = await axios.patch(`https://assignment-12-server-psi-three.vercel.app/users/role/${email}`, { role: "instructor" })
         const data = res.data;
         if (data.modifiedCount > 0) {
             refetch();
@@ -31,7 +31,7 @@ const ManageUsers = () => {
     }
     const handleMakeAdmin = async (email, name) => {
         console.log(email)
-        const res = await axios.patch(`http://localhost:5000/users/role/${email}`, { role: "admin" })
+        const res = await axios.patch(`https://assignment-12-server-psi-three.vercel.app/users/role/${email}`, { role: "admin" })
         const data = res.data;
         if (data.modifiedCount > 0) {
             refetch();

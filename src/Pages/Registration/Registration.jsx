@@ -44,7 +44,7 @@ const Registration = () => {
                                 updateUserData(result.user, name, photoURL)
                                     .then(() => {
                                         const saveUser = { name, email, photoURL, role: "student" };
-                                        axios.post("http://localhost:5000/users", saveUser)
+                                        axios.post("https://assignment-12-server-psi-three.vercel.app/users", saveUser)
                                             .then(res => {
                                                 if (res.data.insertedId) {
                                                     Swal.fire({
@@ -92,7 +92,7 @@ const Registration = () => {
             .then((result) => {
                 const user = result.user;
                 const saveUser = { name: user.displayName, email: user.email, photoURL: user.photoURL, role: "student" };
-                axios.post("http://localhost:5000/users", saveUser)
+                axios.post("https://assignment-12-server-psi-three.vercel.app/users", saveUser)
                     .then(() => {
                         setError("");
                         navigate("/");
