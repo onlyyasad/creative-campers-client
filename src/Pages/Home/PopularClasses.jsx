@@ -8,15 +8,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const PopularClasses = () => {
     const [popularClasses, setPopularClasses] = useState([]);
-    const {user} = useAuth();
+    const { user } = useAuth();
 
     const location = useLocation();
     const navigate = useNavigate();
 
-    useEffect(() =>{
+    useEffect(() => {
         fetch("https://assignment-12-server-psi-three.vercel.app/classes/popular")
-        .then(res => res.json())
-        .then(data => setPopularClasses(data))
+            .then(res => res.json())
+            .then(data => setPopularClasses(data))
     }, [])
 
     const handleSelectClass = singleClass => {
@@ -60,8 +60,11 @@ const PopularClasses = () => {
     }
 
     return (
-        <div className="my-8">
-            <h1 className="uppercase font-bold text-3xl my-8 text-center">Popular Classes</h1>
+        <div className="container mx-auto my-8">
+            <div className="my-8">
+                <h1 className="uppercase font-bold text-3xl text-center">Popular Classes</h1>
+                <p className='text-black text-center'>Here are the popular classes based on the students enrolled to each class.</p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
                 {
                     popularClasses.map(singleClass => <ClassCard key={singleClass._id} singleClass={singleClass} handleSelectClass={handleSelectClass}></ClassCard>)

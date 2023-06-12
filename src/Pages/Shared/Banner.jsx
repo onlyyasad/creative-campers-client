@@ -8,7 +8,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 const Banner = () => {
     return (
-        <div>
+        <div className="pt-16">
             <>
                 <Swiper
                     spaceBetween={30}

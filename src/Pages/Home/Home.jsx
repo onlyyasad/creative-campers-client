@@ -11,8 +11,8 @@ const Home = () => {
             <Banner></Banner>
             <EnrollmentTimeout></EnrollmentTimeout>
             <PopularClasses></PopularClasses>
-            <PopularInstructors></PopularInstructors>
             <WhatMakesUsSpecial></WhatMakesUsSpecial>
+            <PopularInstructors></PopularInstructors>
         </div>
     );
 };
