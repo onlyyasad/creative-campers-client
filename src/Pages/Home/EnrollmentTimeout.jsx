@@ -1,47 +1,79 @@
-import { useTimer } from 'react-timer-hook';
+import { useTimer } from "react-timer-hook";
+import Gradient from "rgt";
+import sectionTop from "../../assets/sectionTop.svg";
 
 const EnrollmentTimeout = () => {
-    const time = new Date("2023-7-8");
-    time.setHours(time.getHours() + 2);
-    const expiryTimestamp = time;
+  const time = new Date("2023-7-8");
+  time.setHours(time.getHours() + 2);
+  const expiryTimestamp = time;
 
-    const { seconds, minutes, hours, days } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
+  const { seconds, minutes, hours, days } = useTimer({
+    expiryTimestamp,
+    onExpire: () => console.warn("onExpire called"),
+  });
 
-    return (
-        <div>
-            <div className="hero py-8 md:min-h-screen">
-                <div className="hero-overlay bg-base-100"></div>
-                <div className="hero-content text-center text-neutral-content">
-                    <div className="max-w-screen-md">
-                        <h1 className="mb-5 text-3xl text-warning font-bold">Enrollment Ends At</h1>
-                        <p className='text-warning'>Enroll to your favorite classes before the time ends and seat availability becomes zero</p>
-                        <div className=' text-warning w-full flex justify-center items-center gap-4 md:gap-6 px-4 py-8 lg:px-10 lg:py-12 rounded-xl lg:rounded-3xl'>
-                            <div>
-                                <p className='text-3xl md:text-7xl'>{days}</p>
-                                <p className='text-sm md:text-base'>Days</p>
-                            </div>
-                            <p className='text-3xl md:text-7xl'>:</p>
-                            <div>
-                                <p className='text-3xl md:text-7xl'>{hours}</p>
-                                <p className='text-sm md:text-base'>Hours</p>
-                            </div>
-                            <p className='text-3xl md:text-7xl'>:</p>
-                            <div>
-                                <p className='text-3xl md:text-7xl'>{minutes}</p>
-                                <p className='text-sm md:text-base'>Minutes</p>
-                            </div>
-                            <p className='text-3xl md:text-7xl'>:</p>
-                            <div>
-                                <p className='text-3xl md:text-7xl'>{seconds}</p>
-                                <p className='text-sm md:text-base'>Seconds</p>
-                            </div>
-                        </div>
-                        <button className="py-4 px-10 mt-8 btn normal-case btn-warning font-bold duration-500 rounded-[50px]  ">Enroll Now!</button>
-                    </div>
-                </div>
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${sectionTop})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <div className="container px-4 mx-auto">
+        <div className="text-center pt-32 md:min-h-full">
+          <h1
+            data-aos="fade-right"
+            className="mb-5 text-3xl text-warning font-bold"
+          >
+            <Gradient dir="left-to-right" from="#06B6D4" to="#1D4ED8">
+              {"Enrollment Ends At"}
+            </Gradient>
+          </h1>
+          <p data-aos="fade-up" className="">
+            Enroll to your favorite classes before the time ends and seat
+            availability becomes zero
+          </p>
+          <div
+            data-aos="fade-right"
+            className="grid pt-10 grid-flow-col justify-center gap-5 text-center auto-cols-max"
+          >
+            <div className="flex flex-col p-2 bg-neutral rounded-md text-neutral-content">
+              <span className="countdown text-5xl">
+                <span style={{ "--value": days }}></span>
+              </span>
+              days
             </div>
+            <div className="flex flex-col p-2 bg-neutral rounded-md text-neutral-content">
+              <span className="countdown text-5xl">
+                <span style={{ "--value": hours }}></span>
+              </span>
+              hours
+            </div>
+            <div className="flex flex-col p-2 bg-neutral rounded-md text-neutral-content">
+              <span className="countdown text-5xl">
+                <span style={{ "--value": minutes }}></span>
+              </span>
+              min
+            </div>
+            <div className="flex flex-col p-2 bg-neutral rounded-md text-neutral-content">
+              <span className="countdown text-5xl">
+                <span style={{ "--value": seconds }}></span>
+              </span>
+              sec
+            </div>
+          </div>
+
+          <button
+            data-aos="fade-up"
+            className="py-4 px-10 mt-8 btn normal-case btn-warning font-bold duration-500 rounded-[50px]  "
+          >
+            Enroll Now!
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default EnrollmentTimeout;
